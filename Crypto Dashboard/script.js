@@ -2,7 +2,7 @@ let balance = 10000;
 let portfolio = { bitcoin: 0, ethereum: 0, solana: 0 };
 let currentPrice = 0;
 
-// 1. Récupérer le prix de la crypto sélectionnée
+
 async function getPrice() {
     const crypto = document.getElementById('crypto-select').value;
     try {
@@ -15,7 +15,7 @@ async function getPrice() {
     }
 }
 
-// 2. Fonction d'achat
+
 function buyCrypto() {
     const crypto = document.getElementById('crypto-select').value;
     const amountToSpend = parseFloat(document.getElementById('amount').value);
@@ -30,7 +30,7 @@ function buyCrypto() {
         return;
     }
 
-    // Calcul
+    
     const quantity = amountToSpend / currentPrice;
     balance -= amountToSpend;
     portfolio[crypto] += quantity;
@@ -38,25 +38,25 @@ function buyCrypto() {
     updateUI(crypto, amountToSpend, quantity);
 }
 
-// 3. Mise à jour de l'interface
+
 function updateUI(crypto, spent, qty) {
-    // Mise à jour solde
+    
     document.getElementById('balance').innerText = balance.toFixed(2);
     
-    // Mise à jour portefeuille texte
+    
     document.getElementById('assets').innerHTML = `
         <p>BTC: ${portfolio.bitcoin.toFixed(4)} | 
            ETH: ${portfolio.ethereum.toFixed(4)} | 
            SOL: ${portfolio.solana.toFixed(2)}</p>
     `;
 
-    // Ajouter à l'historique
+    
     const list = document.getElementById('history-list');
     const entry = document.createElement('li');
     entry.innerHTML = `<span class="buy-msg">Achat</span> ${qty.toFixed(4)} ${crypto.toUpperCase()} pour ${spent}€`;
-    list.prepend(entry); // Ajoute en haut de la liste
+    list.prepend(entry); 
 }
 
-// Actualisation automatique
+
 setInterval(getPrice, 15000);
 getPrice();
