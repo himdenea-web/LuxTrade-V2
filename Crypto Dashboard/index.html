@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LuxTrade V2 - Pro Simulateur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LuxTrade 🇱🇺</h1>
+        
+        <div class="wallet-section">
+            <p>Solde : <strong id="balance">10000</strong> €</p>
+            <select id="crypto-select" onchange="getPrice()">
+                <option value="bitcoin">Bitcoin (BTC)</option>
+                <option value="ethereum">Ethereum (ETH)</option>
+                <option value="solana">Solana (SOL)</option>
+            </select>
+            <p>Prix : <strong id="crypto-price">Chargement...</strong></p>
+        </div>
+
+        <div class="trade-section">
+            <input type="number" id="amount" placeholder="Montant en €">
+            <button onclick="buyCrypto()">Acheter</button>
+        </div>
+
+        <div class="portfolio">
+            <h3>Mon Portefeuille</h3>
+            <div id="assets">
+                <!-- Les cryptos achetées s'afficheront ici -->
+            </div>
+        </div>
+
+        <div class="history">
+            <h3>Historique</h3>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
